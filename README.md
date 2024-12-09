@@ -1,4 +1,4 @@
-# unit-4-5-assignment
+# unit-5-5-assignment
 
 ## Git Config
 ```
@@ -20,130 +20,82 @@ java Main.java
 
 After you compile the shape classes, you only need to compile and run `Main.java` as usual.
 
-# Problem 1 - PrintNTimes
+# Instructions  
 
-Write code that takes a user input of a String and an integer. The code should print each letter of the String the n number of times, where n is the integer input from the user.
+## Classwork
+Follow along in class and create the Dog class in the file named Dog.java.
 
-**Sample run:**
+## Problem 1 - Person Class
+Create a class named `Person` which will represent a unique person. The class should store the following information in appropriate (private) variables:
+
+* The first name of the person
+* The last name of the person
+* The age of the person (in years)
+* The social security number (SSN) of the person
+
+You'll need to add member variables (fields) to your class to store the information for a person - make sure you choose the names of these carefully to avoid a conflict with the names of the parameters you use in your constructor.
+
+Create setters and getters for your class, and test each function.  Also create the `toString()` method, which should return a string representing the Player in the format shown below.  You **MUST** include the tabs using the tab escape character `\t`.
 ```
-printNTimes("code", 3) results in
-cccooodddeee
-```
-
-# Problem 2 - PrintNums
-
-Write code which prints every number from 10 to 1 a number of times equal to the number itself (e.g. ten 10’s, nine 9's...). Every individual number printed should be separated by a space, and there should be a new line each time the number changes. You should use nested loops to produce your output (it will result in far less code).
-
-**Partial sample run:**
-```
-10 10 10 10 10 10 10 10 10 10
-9 9 9 9 9 9 9 9 9
-8 8 8 8 8 8 8 8
-........
-```
-
-# Problem 3 - UprightNumberTriangle
-In this program, ask the user to enter a number.
-Print an upright number tree from 1 to the number the user inputted.
-
-**Sample Run**
-```
-Input a number: 5
-1 
-1 2 
-1 2 3 
-1 2 3 4 
-1 2 3 4 5 
+SSN: Social Security Number
+	Name: Person's Name
+	Age: Person's age
 ```
 
-# Problem 4 - StarTree
-In this program, you need to make an upside-down tree that contains stars *. After all, in computer science, trees have the root at the top and leaves at the bottom!
-
-Your output should look like:
+**Sample run**
 ```
-* * * * * * * * * 
- * * * * * * * * 
-  * * * * * * * 
-   * * * * * * 
-    * * * * * 
-     * * * * 
-      * * * 
-       * * 
-        * 
-```
-**Hint:** You will need to create a variable that controls how far the * is from edge of the console. That variable should change size each iteration through the outer loop!
+Enter the person's first name:
+Jon
+Enter the person's last name: 
+Doe
+Enter the person's age: 
+35
+Enter the person's social security number: 
+123456789
 
-**Challenge:** Modify your program so that it asks for the height of your tree
-and prints a tree of that height.
-
-# Problem 5 - MultTable
-In this program, you need to make a multiplication table. Your output should look like:
-```
-1  2  3  4  5  6  7  8  9  10  
-2  4  6  8  10  12  14  16  18  20  
-3  6  9  12  15  18  21  24  27  30  
-4  8  12  16  20  24  28  32  36  40  
-5  10  15  20  25  30  35  40  45  50  
-6  12  18  24  30  36  42  48  54  60  
-7  14  21  28  35  42  49  56  63  70  
-8  16  24  32  40  48  56  64  72  80  
-9  18  27  36  45  54  63  72  81  90  
-10  20  30  40  50  60  70  80  90  100
+Output:
+SSN: 123456789
+	Name: Jon Doe
+	Age: 35
 ```
 
-## Sample Solutions
-```java
-public static void printNTimes(String word, int N)
-{
-  for (int curr_index = 0; curr_index < word.length(); curr_index++)
-  {
-    for (int curr_print = 0; curr_print < N; curr_print++)
-    {
-      String letter = word.substring(curr_index, curr_index+1);
-      System.out.print(letter);
-    }
-  }
-}
+## Problem 2 - Oven Class
+Finish writing the `Oven` class that represents an oven. This class has the variables, constructors and methods detailed below. You should write code implementing the methods and constructors so they behave as described.
 
-public static void printNums()
-{
-  for (int curr_num = 10; curr_num > 0; curr_num--)
-  {
-    for (int print_num = 0; print_num < curr_num; print_num++)
-    {
-      System.out.print(curr_num + " ");
-    }
-    System.out.println();
-  }
-}
+### Variables
 
-public static void uprightNumberTriangle(int N)
-{
-  for (int row = 1; row <= N; row++)
-  {
-    for (int curr_num = 1; curr_num <= row; curr_num++)
-    {
-      System.out.print(curr_num + " ");
-    }
-    System.out.println();
-  }
-}
+* `private int maxTemp` - the maximum temperature of the oven. This value should not be changed after the oven is constructed. If the temperature is greater than 500 or less than 0, it should be changed to 500.
+* `private int currentTemp` - the current temperature of the oven. Should not be greater than maxTemp or less than 0. If currentTemp is greater than maxTemp, it should be set to maxTemp. If currentTemp is less than 0, it should be set to 0.
 
-public static void starTree()
-{
-  for (int row = 0; row < 9; row++)
-  {
-    for (int space_count = 0; space_count < row; space_count++)
-    {
-      System.out.print(" ");
-    }
+### Methods
+* `public int getMaxTemp()` - returns the `maxTemp` of the oven.
+* `public int getCurrentTemp()`- returns the currentTemp of the oven.
+* `public void turnOff()` - sets the `currentTemp` of the oven to 0 if the `currentTemp` of the oven is greater than 0.
+* `public boolean isOn()` - return true if `currentTemp` of the oven is greater than 0.
+* `public void preheat(int temp)` - sets `currentTemp` of the oven to temp. If `temp` is greater than `maxTemp`, then set `currentTemp` to `maxTemp`. If `temp` is less than or equal to 0, do nothing.
+* `public String toString()` - Returns a String of the format `"New oven with a maximum temperature of maxTemp and a starting temperature of currentTemp"`
 
-    for (int star_count = row; star_count < 9; star_count++)
-    {
-      System.out.print("* ");
-    }
-    System.out.println();
-  }
-}
-
+**Sample run**
 ```
+Maximum oven temperature: 
+450
+Starting temperature of the oven: 
+70
+New oven with a maximum temperature of 450 and a starting temperature of 70 degrees.
+To preheat the oven enter "p", to turn the oven off enter "o", to restart enter "r", to quit enter "q"
+p
+Enter the temperature to preheat the oven to: 
+350
+Current temperature of the oven is now 350 degrees
+
+New oven with a maximum temperature of 450 and a starting temperature of 350 degrees.
+To preheat the oven enter "p", to turn the oven off enter "o", to restart enter "r", to quit enter "q"
+o
+Turning the oven off.
+
+New oven with a maximum temperature of 450 and a starting temperature of 0 degrees. 
+To preheat the oven enter "p", to turn the oven off enter "o", to restart enter "r", to quit enter "q"
+q
+```
+
+**Hint** - Start by writing the 3 accessor methods - `getMaxTemp`, `getCurrentTemp` and `isOn`. These methods just need to return the relevant member variables. Then you can focus on writing and testing the more difficult remaining methods.
